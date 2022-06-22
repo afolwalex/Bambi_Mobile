@@ -2,12 +2,14 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../../screens/App/Home';
+import Learn from '../../screens/App/Learn';
+import PiggyBank from '../../screens/App/PiggyBank';
+import Profile from '../../screens/App/Profile';
 
 import HomeIcon from '../../../assets/images/Home.svg';
 import LearnIcon from '../../../assets/images/Learn.svg';
 import BankIcon from '../../../assets/images/Bank.svg';
 import ProfileIcon from '../../../assets/images/Profile.svg';
-import ScreenCover from '../../components/ScreenCover';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,6 +17,7 @@ const DashboardTabs = () => {
     return (
         <Tab.Navigator
             initialRouteName="Home"
+            sceneContainerStyle={{backgroundColor: '#FFFFFF'}}
             screenOptions={{
                 headerShown: false,
                 tabBarActiveTintColor: '#4E51BF',
@@ -26,6 +29,13 @@ const DashboardTabs = () => {
                     bottom: 15,
                     borderRadius: 10,
                     height: 60,
+                    elevation: 2,
+                    shadowRadius: 1,
+                    shadowOpacity: 0.2,
+                    shadowOffset: {
+                        width: 0,
+                        height: 1,
+                    },
                 },
             }}>
             <Tab.Screen
@@ -35,8 +45,7 @@ const DashboardTabs = () => {
                     tabBarLabel: 'Home',
                     tabBarIcon: ({color}) => <HomeIcon style={{color}} />,
                     tabBarLabelStyle: {
-                        fontWeight: '600',
-                        fontFamily: 'Inter-Black',
+                        fontFamily: 'Inter-Bold',
                     },
                     tabBarItemStyle: {
                         bottom: 3,
@@ -45,12 +54,12 @@ const DashboardTabs = () => {
             />
             <Tab.Screen
                 name="Learn"
-                component={Home}
+                component={Learn}
                 options={{
                     tabBarLabel: 'Learn',
                     tabBarIcon: ({color}) => <LearnIcon style={{color}} />,
                     tabBarLabelStyle: {
-                        fontWeight: '600',
+                        fontFamily: 'Inter-Bold',
                     },
                     tabBarItemStyle: {
                         bottom: 3,
@@ -59,12 +68,12 @@ const DashboardTabs = () => {
             />
             <Tab.Screen
                 name="Bank"
-                component={Home}
+                component={PiggyBank}
                 options={{
                     tabBarLabel: 'Piggybank',
                     tabBarIcon: ({color}) => <BankIcon style={{color}} />,
                     tabBarLabelStyle: {
-                        fontWeight: '600',
+                        fontFamily: 'Inter-Bold',
                     },
                     tabBarItemStyle: {
                         bottom: 3,
@@ -73,12 +82,12 @@ const DashboardTabs = () => {
             />
             <Tab.Screen
                 name="Profile"
-                component={Home}
+                component={Profile}
                 options={{
                     tabBarLabel: 'Profile',
                     tabBarIcon: ({color}) => <ProfileIcon style={{color}} />,
                     tabBarLabelStyle: {
-                        fontWeight: '600',
+                        fontFamily: 'Inter-Bold',
                     },
                     tabBarItemStyle: {
                         bottom: 3,

@@ -13,3 +13,18 @@ export const routeThemeReducer = (state = initialThemeState, action) => {
             return state;
     }
 };
+
+export const loadingReducer = (state = {loading: false}, action) => {
+    switch (action.type) {
+        case types.START_LOADING:
+            return {
+                loading: true,
+            };
+        case types.STOP_LOADING:
+            return {
+                loading: false,
+            };
+        default:
+            return state;
+    }
+};
