@@ -1,16 +1,21 @@
 import {StyleSheet, StatusBar} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import NavContainer from './src/navigation/NavContainer';
 import configureStore from './src/redux/store';
 import persistStore from 'redux-persist/es/persistStore';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
+import SplashScreen from 'react-native-splash-screen';
 
 const store = configureStore();
 
 const persistor = persistStore(store);
 
 const App = () => {
+    useEffect(() => {
+        SplashScreen.hide();
+    }, []);
+
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>
