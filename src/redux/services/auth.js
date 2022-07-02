@@ -11,7 +11,7 @@ import {
     stopLoading,
 } from '../actions/basic.types';
 
-export const loginUser = (payload, timeout) => {
+export const loginUser = payload => {
     return async dispatch => {
         dispatch(startLoading());
         await axios
@@ -32,9 +32,32 @@ export const loginUser = (payload, timeout) => {
     };
 };
 
+export const createUser = payload => {
+    return async dispatch => {
+        dispatch(startLoading());
+        await axios
+            .post(`${url}/users`, payload, {headers})
+            .then(async res => {
+                dispatch(stopLoading());
+                Navigation.navigate('Login');
+                Alert.alert(
+                    '',
+                    `Congrats, ${res.data.username}. Your account has been registered`,
+                );
+            })
+            .catch(err => {
+                Alert.alert('', err.response.data.message || 'Network Error');
+                dispatch(stopLoading());
+            });
+    };
+};
+
 export const signOutUser = () => {
     return async dispatch => {
         dispatch(sign_out());
+        dispatch(change_route_theme('#4E51BF', '#4E51BF'));
         await AsyncStorage.removeItem('@user_token');
+        Navigation.navigate('Auth');
+        Navigation.reset('Auth');
     };
 };

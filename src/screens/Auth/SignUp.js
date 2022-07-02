@@ -16,7 +16,9 @@ import KeyIcon from '../../../assets/images/email.svg';
 import EmailIcon from '../../../assets/images/key.svg';
 import UserIcon from '../../../assets/images/user.svg';
 import Logo from '../../../assets/images/logo-white.svg';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {createUser} from '../../redux/services/auth';
+import Loader from '../../components/Loader';
 
 const SignUp = ({navigation}) => {
     const dispatch = useDispatch();
@@ -27,12 +29,32 @@ const SignUp = ({navigation}) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [showCPassword, setShowCPassword] = useState(false);
+    const [username, setUsername] = useState('');
+    const [mobile, setMobile] = useState('');
+    const [parentMobile, setParentMobile] = useState('');
+
+    const uiLoader = useSelector(state => state.uiLoader);
+    const {loading} = uiLoader;
 
     const socialHandler = () => {
         Alert.alert('', 'Social Login will be available soon.');
     };
 
-    const submitHandler = () => {};
+    const submitHandler = () => {
+        if (name && email && username && password) {
+            let payload = {
+                name,
+                username,
+                email,
+                password,
+                mobile: '09011122333',
+                parentMobile: '09022233444',
+            };
+            dispatch(createUser(payload));
+        } else {
+            Alert.alert('', 'Please fill all fields');
+        }
+    };
 
     return (
         <ImageBackground
@@ -60,6 +82,18 @@ const SignUp = ({navigation}) => {
                                 value={name}
                                 onChangeText={text => setName(text)}
                                 placeholder="Full Name"
+                                placeholderTextColor={'#D0D0D0'}
+                            />
+                            <View style={[styles.set1, {top: 15}]}>
+                                <UserIcon />
+                            </View>
+                        </View>
+                        <View style={styles.inputField}>
+                            <TextInput
+                                style={styles.input}
+                                value={username}
+                                onChangeText={text => setUsername(text)}
+                                placeholder="Username"
                                 placeholderTextColor={'#D0D0D0'}
                             />
                             <View style={[styles.set1, {top: 15}]}>
@@ -101,7 +135,7 @@ const SignUp = ({navigation}) => {
                                 />
                             </TouchableOpacity>
                         </View>
-                        <View style={styles.inputField}>
+                        {/* <View style={styles.inputField}>
                             <TextInput
                                 style={styles.input}
                                 value={confirmPassword}
@@ -123,7 +157,7 @@ const SignUp = ({navigation}) => {
                                     size={18}
                                 />
                             </TouchableOpacity>
-                        </View>
+                        </View> */}
 
                         <View style={{marginTop: 20}}>
                             <View
@@ -233,6 +267,7 @@ const SignUp = ({navigation}) => {
                     </View>
                 </KeyboardAwareScrollView>
             </View>
+            {loading && <Loader />}
         </ImageBackground>
     );
 };
