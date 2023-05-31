@@ -17,21 +17,22 @@ import HistoryIcon from '../../../assets/images/history.svg';
 import NotificationIcon from '../../../assets/images/notification.svg';
 import StatsIcon from '../../../assets/images/stats.svg';
 import PiggyIcon from '../../../assets/images/piggy.svg';
+import mainStyles from '../../utils/mainStyles';
 
 const Profile = ({navigation}) => {
     const auth = useSelector(state => state.auth);
     const {user_details} = auth;
 
     return (
-        <View style={styles.container}>
+        <View style={mainStyles.container}>
             <ScrollView
                 contentContainerStyle={{paddingBottom: 70}}
                 showsVerticalScrollIndicator={false}>
-                <View style={styles.header}>
+                <View style={mainStyles.header}>
                     <View />
                     <Text
                         style={[
-                            styles.textBold,
+                            mainStyles.txtBold,
                             {fontSize: 17, textTransform: 'capitalize'},
                         ]}>
                         My Profile
@@ -67,12 +68,12 @@ const Profile = ({navigation}) => {
                             marginVertical: 10,
                             alignItems: 'center',
                         }}>
-                        <Text style={[styles.textBold, {fontSize: 16}]}>
+                        <Text style={[mainStyles.txtBold, {fontSize: 16}]}>
                             {user_details.name}
                         </Text>
                         <Text
                             style={[
-                                styles.text,
+                                mainStyles.txt,
                                 {color: '#FF92A4', marginLeft: 10},
                             ]}>
                             Lagos
@@ -96,14 +97,14 @@ const Profile = ({navigation}) => {
                             }}>
                             <Text
                                 style={[
-                                    styles.textBold,
+                                    mainStyles.txtBold,
                                     {color: '#fff', fontSize: 13},
                                 ]}>
                                 17,000
                             </Text>
                             <Text
                                 style={[
-                                    styles.text,
+                                    mainStyles.txt,
                                     {color: '#FFF', fontSize: 13},
                                 ]}>
                                 total points
@@ -118,14 +119,14 @@ const Profile = ({navigation}) => {
                             }}>
                             <Text
                                 style={[
-                                    styles.textBold,
+                                    mainStyles.txtBold,
                                     {color: '#fff', fontSize: 13},
                                 ]}>
                                 1,200
                             </Text>
                             <Text
                                 style={[
-                                    styles.text,
+                                    mainStyles.txt,
                                     {color: '#FFF', fontSize: 13},
                                 ]}>
                                 world rank
@@ -138,14 +139,14 @@ const Profile = ({navigation}) => {
                             }}>
                             <Text
                                 style={[
-                                    styles.textBold,
+                                    mainStyles.txtBold,
                                     {color: '#fff', fontSize: 13},
                                 ]}>
                                 108
                             </Text>
                             <Text
                                 style={[
-                                    styles.text,
+                                    mainStyles.txt,
                                     {color: '#FFF', fontSize: 13},
                                 ]}>
                                 local rank
@@ -170,7 +171,7 @@ const Profile = ({navigation}) => {
                             paddingVertical: 12,
                             borderRadius: 10,
                         }}>
-                        <Text style={[styles.textBold, {color: '#fff'}]}>
+                        <Text style={[mainStyles.txtBold, {color: '#fff'}]}>
                             Edit Profile
                         </Text>
                     </TouchableOpacity>
@@ -199,14 +200,14 @@ const Profile = ({navigation}) => {
                         }}>
                         <Text
                             style={[
-                                styles.textBold,
+                                mainStyles.txtBold,
                                 {color: '#fff', marginBottom: 3, fontSize: 15},
                             ]}>
                             Leaderboard
                         </Text>
                         <Text
                             style={[
-                                styles.text,
+                                mainStyles.txt,
                                 {color: '#fff', marginBottom: 3},
                             ]}>
                             Get inspired by those on the leaderboard
@@ -241,7 +242,7 @@ const Profile = ({navigation}) => {
                         <View style={styles.icon}>
                             <CourseIcon />
                         </View>
-                        <Text style={[styles.textBold, {fontSize: 16}]}>
+                        <Text style={[mainStyles.txtBold, {fontSize: 16}]}>
                             My Courses
                         </Text>
                     </TouchableOpacity>
@@ -249,7 +250,7 @@ const Profile = ({navigation}) => {
                         <View style={styles.icon}>
                             <StatsIcon />
                         </View>
-                        <Text style={[styles.textBold, {fontSize: 16}]}>
+                        <Text style={[mainStyles.txtBold, {fontSize: 16}]}>
                             View Stats
                         </Text>
                     </TouchableOpacity>
@@ -257,7 +258,7 @@ const Profile = ({navigation}) => {
                         <View style={styles.icon}>
                             <HistoryIcon />
                         </View>
-                        <Text style={[styles.textBold, {fontSize: 16}]}>
+                        <Text style={[mainStyles.txtBold, {fontSize: 16}]}>
                             Tasks History
                         </Text>
                     </TouchableOpacity>
@@ -265,7 +266,7 @@ const Profile = ({navigation}) => {
                         <View style={styles.icon}>
                             <NotificationIcon />
                         </View>
-                        <Text style={[styles.textBold, {fontSize: 16}]}>
+                        <Text style={[mainStyles.txtBold, {fontSize: 16}]}>
                             Notifications Settings
                         </Text>
                     </TouchableOpacity>
@@ -273,7 +274,7 @@ const Profile = ({navigation}) => {
                         <View style={styles.icon}>
                             <PiggyIcon />
                         </View>
-                        <Text style={[styles.textBold, {fontSize: 16}]}>
+                        <Text style={[mainStyles.txtBold, {fontSize: 16}]}>
                             Piggybank Settings
                         </Text>
                     </TouchableOpacity>
@@ -286,17 +287,6 @@ const Profile = ({navigation}) => {
 export default Profile;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingHorizontal: 12,
-        paddingVertical: 10,
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: 20,
-    },
     round: {
         borderColor: '#4E51BF',
         borderWidth: 1,
@@ -304,14 +294,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         paddingVertical: 5,
         borderRadius: 8,
-    },
-    text: {
-        fontFamily: 'Inter-Regular',
-        color: '#2E3E5C',
-    },
-    textBold: {
-        fontFamily: 'Inter-Bold',
-        color: '#2E3E5C',
     },
     wallet: {
         flexDirection: 'row',

@@ -11,6 +11,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Feather from 'react-native-vector-icons/Feather';
 import EmailIcon from '../../../assets/images/key.svg';
 import {useDispatch} from 'react-redux';
+import mainStyles from '../../utils/mainStyles';
 
 const ChangePassword = ({navigation}) => {
     const dispatch = useDispatch();
@@ -44,14 +45,14 @@ const ChangePassword = ({navigation}) => {
                             }}>
                             <Text
                                 style={[
-                                    styles.textBold,
+                                    mainStyles.textBold,
                                     {fontSize: 22, color: '#FFFEFE'},
                                 ]}>
                                 Reset Password
                             </Text>
                             <Text
                                 style={[
-                                    styles.text,
+                                    mainStyles.text,
                                     {
                                         color: '#FFFEFE',
                                         marginTop: 20,
@@ -66,7 +67,7 @@ const ChangePassword = ({navigation}) => {
 
                         <View style={styles.inputField}>
                             <TextInput
-                                style={styles.input}
+                                style={mainStyles.loginInput}
                                 value={password}
                                 onChangeText={text => setPassword(text)}
                                 secureTextEntry={showPassword ? false : true}
@@ -89,7 +90,7 @@ const ChangePassword = ({navigation}) => {
                         </View>
                         <View style={styles.inputField}>
                             <TextInput
-                                style={styles.input}
+                                style={mainStyles.loginInput}
                                 value={confirmPassword}
                                 onChangeText={text => setConfirmPassword(text)}
                                 secureTextEntry={showCPassword ? false : true}
@@ -114,12 +115,12 @@ const ChangePassword = ({navigation}) => {
                         <View style={{marginTop: 20}}>
                             <View style={{marginTop: 20, marginBottom: 20}}>
                                 <TouchableOpacity
-                                    style={styles.btn}
+                                    style={mainStyles.loginBtn}
                                     onPress={submitHandler}
                                     activeOpacity={0.8}>
                                     <Text
                                         style={[
-                                            styles.textBold,
+                                            mainStyles.textBold,
                                             {color: '#2E3E5C'},
                                         ]}>
                                         Reset Password
@@ -147,16 +148,6 @@ const styles = StyleSheet.create({
         marginBottom: 25,
         position: 'relative',
     },
-    input: {
-        width: '100%',
-        borderColor: '#F1F6FB',
-        borderWidth: 1,
-        height: 50,
-        borderRadius: 8,
-        paddingLeft: 40,
-        color: 'rgba(241, 246, 251, 0.8)',
-        fontFamily: 'Inter-Regular',
-    },
     set1: {
         position: 'absolute',
         left: 10,
@@ -166,35 +157,5 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 10,
         top: 16,
-    },
-    text: {
-        fontFamily: 'Inter-Regular',
-        color: 'rgba(241, 246, 251, 0.8)',
-    },
-    textBold: {
-        fontFamily: 'Inter-Bold',
-        color: 'rgba(241, 246, 251, 0.8)',
-    },
-    round: {
-        backgroundColor: '#F1F6FB',
-        height: 36,
-        width: 36,
-        borderRadius: 18,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginHorizontal: 10,
-    },
-    line: {
-        height: 1,
-        width: 50,
-        backgroundColor: '#F1F6FB',
-        marginHorizontal: 10,
-    },
-    btn: {
-        backgroundColor: '#F1F6FB',
-        alignItems: 'center',
-        paddingVertical: 15,
-        borderRadius: 10,
-        position: 'relative',
     },
 });

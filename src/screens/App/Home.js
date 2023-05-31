@@ -14,20 +14,21 @@ import Food from '../../../assets/images/food.svg';
 import Recommended from '../../components/Recommended';
 import {assigned_tasks, courses} from '../../utils/data';
 import CourseS from '../../components/CourseS';
+import mainStyles from '../../utils/mainStyles';
 
 const Home = ({navigation}) => {
     const auth = useSelector(state => state.auth);
     const {user_details} = auth;
 
     return (
-        <View style={styles.container}>
+        <View style={mainStyles.container}>
             <ScrollView
                 contentContainerStyle={{paddingBottom: 70}}
                 showsVerticalScrollIndicator={false}>
-                <View style={styles.header}>
+                <View style={[mainStyles.header, {marginBottom: 0}]}>
                     <Text
                         style={[
-                            styles.textBold,
+                            mainStyles.txtBold,
                             {fontSize: 17, textTransform: 'capitalize'},
                         ]}>
                         Hi, {user_details.username}
@@ -37,7 +38,7 @@ const Home = ({navigation}) => {
                             activeOpacity={0.8}
                             onPress={() => navigation.navigate('Points')}
                             style={[styles.round]}>
-                            <Text style={[styles.text, {color: '#4E51BF'}]}>
+                            <Text style={[mainStyles.txt, {color: '#4E51BF'}]}>
                                 🌟: 500P
                             </Text>
                         </TouchableOpacity>
@@ -64,20 +65,20 @@ const Home = ({navigation}) => {
                         }}>
                         <Text
                             style={[
-                                styles.text,
+                                mainStyles.txt,
                                 {color: '#fff', marginBottom: 3},
                             ]}>
                             Wallet balance
                         </Text>
                         <Text
                             style={[
-                                styles.textBold,
+                                mainStyles.txtBold,
                                 {color: '#fff', marginBottom: 3, fontSize: 17},
                             ]}>
                             ₦7,500.23
                         </Text>
                         <TouchableOpacity>
-                            <Text style={[styles.text, {color: '#fff'}]}>
+                            <Text style={[mainStyles.txt, {color: '#fff'}]}>
                                 View wallet {'>'}
                             </Text>
                         </TouchableOpacity>
@@ -106,19 +107,21 @@ const Home = ({navigation}) => {
                         </View>
                     </View>
                 </View>
-                <View style={styles.head}>
-                    <Text style={[styles.textBold]}>Recommended for you</Text>
+                <View style={mainStyles.head}>
+                    <Text style={[mainStyles.txtBold]}>
+                        Recommended for you
+                    </Text>
                     <TouchableOpacity>
-                        <Text style={[styles.textBold, {color: '#FF92A4'}]}>
+                        <Text style={[mainStyles.txtBold, {color: '#FF92A4'}]}>
                             View more
                         </Text>
                     </TouchableOpacity>
                 </View>
                 <Recommended navigation={navigation} />
-                <View style={styles.head}>
-                    <Text style={[styles.textBold]}>Assigned tasks</Text>
+                <View style={mainStyles.head}>
+                    <Text style={[mainStyles.txtBold]}>Assigned tasks</Text>
                     <TouchableOpacity>
-                        <Text style={[styles.textBold, {color: '#FF92A4'}]}>
+                        <Text style={[mainStyles.txtBold, {color: '#FF92A4'}]}>
                             View more
                         </Text>
                     </TouchableOpacity>
@@ -141,12 +144,12 @@ const Home = ({navigation}) => {
                         </View>
                     </View>
                     <View style={{width: '80%'}}>
-                        <Text style={[styles.text, {color: '#fff'}]}>
+                        <Text style={[mainStyles.txt, {color: '#fff'}]}>
                             7 tasks done
                         </Text>
                         <Text
                             style={[
-                                styles.textBold,
+                                mainStyles.txtBold,
                                 {color: '#fff', marginTop: 5},
                             ]}>
                             15 tasks assignes
@@ -171,20 +174,20 @@ const Home = ({navigation}) => {
                         </View>
                     </View>
                     <View style={{width: '80%'}}>
-                        <Text style={[styles.text, {color: '#fff'}]}>
+                        <Text style={[mainStyles.txt, {color: '#fff'}]}>
                             Test/increase your knowledge
                         </Text>
                         <Text
                             style={[
-                                styles.textBold,
+                                mainStyles.txtBold,
                                 {color: '#fff', marginTop: 5},
                             ]}>
                             Take a Quiz
                         </Text>
                     </View>
                 </TouchableOpacity>
-                <View style={styles.head}>
-                    <Text style={[styles.textBold]}>
+                <View style={mainStyles.head}>
+                    <Text style={[mainStyles.txtBold]}>
                         Join a community challenge
                     </Text>
                 </View>
@@ -218,7 +221,9 @@ const Home = ({navigation}) => {
                                 marginRight: 10,
                             }}
                         />
-                        <Text style={[styles.text, {color: '#fff'}]}>You</Text>
+                        <Text style={[mainStyles.txt, {color: '#fff'}]}>
+                            You
+                        </Text>
                     </View>
                     <View
                         style={{
@@ -245,9 +250,11 @@ const Home = ({navigation}) => {
                                 marginRight: 10,
                                 borderWidth: 1,
                             }}>
-                            <Text style={[styles.text]}>???</Text>
+                            <Text style={[mainStyles.txt]}>???</Text>
                         </View>
-                        <Text style={[styles.text, {color: '#fff'}]}>???</Text>
+                        <Text style={[mainStyles.txt, {color: '#fff'}]}>
+                            ???
+                        </Text>
                     </View>
                     <View
                         style={{
@@ -261,13 +268,13 @@ const Home = ({navigation}) => {
                             alignItems: 'center',
                             justifyContent: 'center',
                         }}>
-                        <Text style={[styles.textBold]}>VS</Text>
+                        <Text style={[mainStyles.txtBold]}>VS</Text>
                     </View>
                 </View>
-                <View style={styles.head}>
-                    <Text style={[styles.textBold]}>Popular Courses</Text>
+                <View style={mainStyles.head}>
+                    <Text style={[mainStyles.txtBold]}>Popular Courses</Text>
                     <TouchableOpacity>
-                        <Text style={[styles.textBold, {color: '#FF92A4'}]}>
+                        <Text style={[mainStyles.txtBold, {color: '#FF92A4'}]}>
                             View more
                         </Text>
                     </TouchableOpacity>
@@ -296,16 +303,6 @@ const Home = ({navigation}) => {
 export default Home;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingHorizontal: 12,
-        paddingVertical: 10,
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
     round: {
         borderColor: '#4E51BF',
         borderWidth: 1,
@@ -313,14 +310,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         paddingVertical: 5,
         borderRadius: 8,
-    },
-    text: {
-        fontFamily: 'Inter-Regular',
-        color: '#2E3E5C',
-    },
-    textBold: {
-        fontFamily: 'Inter-Bold',
-        color: '#2E3E5C',
     },
     wallet: {
         flexDirection: 'row',
@@ -334,11 +323,5 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         marginBottom: 10,
         flexDirection: 'row',
-    },
-    head: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 20,
-        marginBottom: 10,
     },
 });

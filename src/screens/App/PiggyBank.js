@@ -14,20 +14,21 @@ import AddIcon from '../../../assets/images/Add-Icon.svg';
 import RechargeIcon from '../../../assets/images/recharge-icon.svg';
 import {transactions} from '../../utils/data';
 import Transaction from '../../components/Transaction';
+import mainStyles from '../../utils/mainStyles';
 
 const PiggyBank = ({navigation}) => {
     const auth = useSelector(state => state.auth);
     const {user_details} = auth;
 
     return (
-        <View style={styles.container}>
+        <View style={mainStyles.container}>
             <ScrollView
                 contentContainerStyle={{paddingBottom: 70}}
                 showsVerticalScrollIndicator={false}>
-                <View style={styles.header}>
+                <View style={[mainStyles.header, {marginBottom: 0}]}>
                     <Text
                         style={[
-                            styles.textBold,
+                            mainStyles.txtBold,
                             {fontSize: 17, textTransform: 'capitalize'},
                         ]}>
                         Hi, {user_details.username}
@@ -45,20 +46,20 @@ const PiggyBank = ({navigation}) => {
                     </View>
                 </View>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.text, {marginRight: 5}]}>
+                    <Text style={[mainStyles.txt, {marginRight: 5}]}>
                         Account Number:
                     </Text>
                     <TouchableOpacity
                         style={{flexDirection: 'row', alignItems: 'center'}}>
                         <Text
                             style={[
-                                styles.text,
+                                mainStyles.txt,
                                 {color: '#4E51BF', marginRight: 5},
                             ]}>
                             20399400490
                         </Text>
                         <Feather name="copy" color="#4E51BF" />
-                        <Text style={[styles.text, {color: '#4E51BF'}]}>
+                        <Text style={[mainStyles.txt, {color: '#4E51BF'}]}>
                             copy
                         </Text>
                     </TouchableOpacity>
@@ -75,14 +76,14 @@ const PiggyBank = ({navigation}) => {
                         }}>
                         <Text
                             style={[
-                                styles.text,
+                                mainStyles.txt,
                                 {color: '#fff', marginBottom: 3},
                             ]}>
                             Wallet balance
                         </Text>
                         <Text
                             style={[
-                                styles.textBold,
+                                mainStyles.txtBold,
                                 {color: '#fff', marginBottom: 3, fontSize: 17},
                             ]}>
                             ₦7,500.23
@@ -123,7 +124,7 @@ const PiggyBank = ({navigation}) => {
                         onPress={() => navigation.navigate('Transfer')}
                         style={{marginHorizontal: 10, alignItems: 'center'}}>
                         <SendIcon />
-                        <Text style={[styles.textBold, {marginTop: 8}]}>
+                        <Text style={[mainStyles.txtBold, {marginTop: 8}]}>
                             Send
                         </Text>
                     </TouchableOpacity>
@@ -132,7 +133,7 @@ const PiggyBank = ({navigation}) => {
                         onPress={() => navigation.navigate('FundWallet')}
                         style={{marginHorizontal: 10, alignItems: 'center'}}>
                         <AddIcon />
-                        <Text style={[styles.textBold, {marginTop: 8}]}>
+                        <Text style={[mainStyles.txtBold, {marginTop: 8}]}>
                             Add Money
                         </Text>
                     </TouchableOpacity>
@@ -141,15 +142,15 @@ const PiggyBank = ({navigation}) => {
                         onPress={() => navigation.navigate('Recharge')}
                         style={{marginHorizontal: 10, alignItems: 'center'}}>
                         <RechargeIcon />
-                        <Text style={[styles.textBold, {marginTop: 8}]}>
+                        <Text style={[mainStyles.txtBold, {marginTop: 8}]}>
                             Recharge
                         </Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.head}>
-                    <Text style={[styles.textBold]}>Saving goals</Text>
+                <View style={mainStyles.head}>
+                    <Text style={[mainStyles.txtBold]}>Saving goals</Text>
                     <TouchableOpacity>
-                        <Text style={[styles.textBold, {color: '#FF92A4'}]}>
+                        <Text style={[mainStyles.txtBold, {color: '#FF92A4'}]}>
                             View all
                         </Text>
                     </TouchableOpacity>
@@ -175,14 +176,14 @@ const PiggyBank = ({navigation}) => {
                     <View style={{width: '70%', marginLeft: 20}}>
                         <Text
                             style={[
-                                styles.textBold,
+                                mainStyles.txtBold,
                                 {color: '#FFF', marginBottom: 3},
                             ]}>
                             My own new gadget
                         </Text>
                         <Text
                             style={[
-                                styles.text,
+                                mainStyles.txt,
                                 {color: '#FFF', marginBottom: 4, fontSize: 13},
                             ]}>
                             ₦56,000/₦122,000
@@ -205,10 +206,12 @@ const PiggyBank = ({navigation}) => {
                         </View>
                     </View>
                 </View>
-                <View style={styles.head}>
-                    <Text style={[styles.textBold]}>Recent Transactions</Text>
+                <View style={mainStyles.head}>
+                    <Text style={[mainStyles.txtBold]}>
+                        Recent Transactions
+                    </Text>
                     <TouchableOpacity>
-                        <Text style={[styles.textBold, {color: '#FF92A4'}]}>
+                        <Text style={[mainStyles.txtBold, {color: '#FF92A4'}]}>
                             View all
                         </Text>
                     </TouchableOpacity>
@@ -226,16 +229,6 @@ const PiggyBank = ({navigation}) => {
 export default PiggyBank;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingHorizontal: 12,
-        paddingVertical: 10,
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
     round: {
         borderColor: '#4E51BF',
         borderWidth: 1,
@@ -244,24 +237,10 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         borderRadius: 8,
     },
-    text: {
-        fontFamily: 'Inter-Regular',
-        color: '#2E3E5C',
-    },
-    textBold: {
-        fontFamily: 'Inter-Bold',
-        color: '#2E3E5C',
-    },
     wallet: {
         flexDirection: 'row',
         marginTop: 20,
         backgroundColor: '#4E51BF',
         borderRadius: 10,
-    },
-    head: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 20,
-        marginBottom: 10,
     },
 });

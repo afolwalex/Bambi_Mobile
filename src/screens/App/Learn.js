@@ -12,21 +12,22 @@ import Filter from '../../../assets/images/filter.svg';
 import {categories, courses} from '../../utils/data';
 import CourseB from '../../components/CourseB';
 import CourseS from '../../components/CourseS';
+import mainStyles from '../../utils/mainStyles';
 
 const Learn = ({navigation}) => {
     const [search, setSearch] = useState('');
     const [activeCategory, setActiveCategory] = useState('all');
 
     return (
-        <View style={styles.container}>
+        <View style={mainStyles.container}>
             <ScrollView
                 contentContainerStyle={{paddingBottom: 70}}
                 showsVerticalScrollIndicator={false}>
-                <View style={styles.header}>
+                <View style={mainStyles.header}>
                     <View />
                     <Text
                         style={[
-                            styles.textBold,
+                            mainStyles.txtBold,
                             {fontSize: 17, textTransform: 'capitalize'},
                         ]}>
                         Discover Courses
@@ -71,8 +72,8 @@ const Learn = ({navigation}) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <View style={styles.head}>
-                    <Text style={[styles.textBold]}>Featured Courses</Text>
+                <View style={mainStyles.head}>
+                    <Text style={[mainStyles.txtBold]}>Featured Courses</Text>
                 </View>
                 <ScrollView showsHorizontalScrollIndicator={false} horizontal>
                     <View
@@ -87,10 +88,10 @@ const Learn = ({navigation}) => {
                         ))}
                     </View>
                 </ScrollView>
-                <View style={styles.head}>
-                    <Text style={[styles.textBold]}>Categories</Text>
+                <View style={mainStyles.head}>
+                    <Text style={[mainStyles.txtBold]}>Categories</Text>
                     <TouchableOpacity>
-                        <Text style={[styles.textBold, {color: '#FF92A4'}]}>
+                        <Text style={[mainStyles.txtBold, {color: '#FF92A4'}]}>
                             View all
                         </Text>
                     </TouchableOpacity>
@@ -105,7 +106,7 @@ const Learn = ({navigation}) => {
                             activeOpacity={0.8}
                             onPress={() => setActiveCategory('all')}
                             style={[
-                                styles.link,
+                                mainStyles.link,
                                 {
                                     backgroundColor:
                                         activeCategory === 'all'
@@ -115,7 +116,7 @@ const Learn = ({navigation}) => {
                             ]}>
                             <Text
                                 style={[
-                                    styles.text,
+                                    mainStyles.txt,
                                     {
                                         color:
                                             activeCategory === 'all'
@@ -132,7 +133,7 @@ const Learn = ({navigation}) => {
                                 onPress={() => setActiveCategory(c.name)}
                                 key={c.id}
                                 style={[
-                                    styles.link,
+                                    mainStyles.link,
                                     {
                                         backgroundColor:
                                             activeCategory === c.name
@@ -142,7 +143,7 @@ const Learn = ({navigation}) => {
                                 ]}>
                                 <Text
                                     style={[
-                                        styles.text,
+                                        mainStyles.txt,
                                         {
                                             color:
                                                 activeCategory === c.name
@@ -180,17 +181,6 @@ const Learn = ({navigation}) => {
 export default Learn;
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingHorizontal: 12,
-        paddingVertical: 10,
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: 20,
-    },
     round: {
         borderColor: '#4E51BF',
         borderWidth: 1,
@@ -198,14 +188,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         paddingVertical: 5,
         borderRadius: 8,
-    },
-    text: {
-        fontFamily: 'Inter-Regular',
-        color: '#2E3E5C',
-    },
-    textBold: {
-        fontFamily: 'Inter-Bold',
-        color: '#2E3E5C',
     },
     input: {
         width: '100%',
@@ -216,18 +198,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         paddingLeft: 40,
         fontFamily: 'Inter-Regular',
-        borderRadius: 10,
-    },
-    head: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 20,
-        marginBottom: 10,
-    },
-    link: {
-        paddingHorizontal: 20,
-        marginRight: 8,
-        paddingVertical: 8,
         borderRadius: 10,
     },
 });

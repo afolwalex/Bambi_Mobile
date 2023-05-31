@@ -13,6 +13,7 @@ import KeyIcon from '../../../assets/images/email.svg';
 import {useDispatch} from 'react-redux';
 import ResetIcon from '../../../assets/images/reset.svg';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
+import mainStyles from '../../utils/mainStyles';
 
 const ResetPassword = ({navigation}) => {
     const dispatch = useDispatch();
@@ -49,7 +50,7 @@ const ResetPassword = ({navigation}) => {
                             }}>
                             <Text
                                 style={[
-                                    styles.textBold,
+                                    mainStyles.textBold,
                                     {fontSize: 22, color: '#FFFEFE'},
                                 ]}>
                                 Reset Password
@@ -57,7 +58,7 @@ const ResetPassword = ({navigation}) => {
                             {!confirmed ? (
                                 <Text
                                     style={[
-                                        styles.text,
+                                        mainStyles.text,
                                         {
                                             color: '#FFFEFE',
                                             marginTop: 20,
@@ -77,7 +78,7 @@ const ResetPassword = ({navigation}) => {
                                     }}>
                                     <View
                                         style={[
-                                            styles.round,
+                                            mainStyles.round,
                                             {
                                                 height: 80,
                                                 width: 80,
@@ -88,7 +89,7 @@ const ResetPassword = ({navigation}) => {
                                     </View>
                                     <Text
                                         style={[
-                                            styles.text,
+                                            mainStyles.text,
                                             {
                                                 color: '#FFFEFE',
                                                 marginTop: 20,
@@ -106,7 +107,7 @@ const ResetPassword = ({navigation}) => {
                         {!confirmed ? (
                             <View style={styles.inputField}>
                                 <TextInput
-                                    style={styles.input}
+                                    style={mainStyles.loginInput}
                                     value={email}
                                     onChangeText={text => setEmail(text)}
                                     placeholder="Email Address"
@@ -152,7 +153,7 @@ const ResetPassword = ({navigation}) => {
                                     }}>
                                     <Text
                                         style={[
-                                            styles.text,
+                                            mainStyles.text,
                                             {
                                                 color: 'rgba(241, 246, 251, 0.8)',
                                                 marginRight: 10,
@@ -171,7 +172,7 @@ const ResetPassword = ({navigation}) => {
                                         }}>
                                         <Text
                                             style={[
-                                                styles.textBold,
+                                                mainStyles.textBold,
                                                 {color: '#FF92A4'},
                                             ]}>
                                             Login
@@ -181,12 +182,12 @@ const ResetPassword = ({navigation}) => {
                             )}
                             <View style={{marginTop: 20, marginBottom: 20}}>
                                 <TouchableOpacity
-                                    style={styles.btn}
+                                    style={mainStyles.loginBtn}
                                     onPress={submitHandler}
                                     activeOpacity={0.8}>
                                     <Text
                                         style={[
-                                            styles.textBold,
+                                            mainStyles.textBold,
                                             {color: '#2E3E5C'},
                                         ]}>
                                         {confirmed ? 'Submit' : 'Send'} Code
@@ -214,16 +215,6 @@ const styles = StyleSheet.create({
         marginBottom: 25,
         position: 'relative',
     },
-    input: {
-        width: '100%',
-        borderColor: '#F1F6FB',
-        borderWidth: 1,
-        height: 50,
-        borderRadius: 8,
-        paddingLeft: 40,
-        color: 'rgba(241, 246, 251, 0.8)',
-        fontFamily: 'Inter-Regular',
-    },
     set1: {
         position: 'absolute',
         left: 10,
@@ -233,35 +224,5 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 10,
         top: 16,
-    },
-    text: {
-        fontFamily: 'Inter-Regular',
-        color: 'rgba(241, 246, 251, 0.8)',
-    },
-    textBold: {
-        fontFamily: 'Inter-Bold',
-        color: 'rgba(241, 246, 251, 0.8)',
-    },
-    round: {
-        backgroundColor: '#F1F6FB',
-        height: 36,
-        width: 36,
-        borderRadius: 18,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginHorizontal: 10,
-    },
-    line: {
-        height: 1,
-        width: 50,
-        backgroundColor: '#F1F6FB',
-        marginHorizontal: 10,
-    },
-    btn: {
-        backgroundColor: '#F1F6FB',
-        alignItems: 'center',
-        paddingVertical: 15,
-        borderRadius: 10,
-        position: 'relative',
     },
 });
